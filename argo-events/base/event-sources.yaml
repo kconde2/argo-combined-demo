@@ -29,23 +29,16 @@ spec:
 
 ---
 
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: github
-  # annotations:
-  #   kubernetes.io/ingress.class: "nginx"
-  #   ingress.kubernetes.io/ssl-redirect: "false"
-  #   nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-           name: github-eventsource-svc
-           port:
-             number: 12000
-    host: webhook.event.kube.kabaconde.com
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`webhook.event.kube.kabaconde.com`) && PathPrefix(`/`)
+    services:
+    - name: github-eventsource-svc
+      port: 12000

@@ -64,7 +64,7 @@ spec:
                       - name: repo_commit_id
                         value: ""
                       - name: container_image
-                        value: kconde2/
+                        value: kabaconde/
                       - name: container_tag
                         value: ""
                   - name: promote-staging
@@ -81,7 +81,7 @@ spec:
                       - name: repo_name
                         value: argo-combined-demo
                       - name: image_owner
-                        value: kconde2
+                        value: kabaconde
                       - name: image_name
                         value: ""
                       - name: tag
@@ -102,7 +102,7 @@ spec:
                       - name: repo_name
                         value: argo-combined-demo
                       - name: image_owner
-                        value: kconde2
+                        value: kabaconde
                       - name: image_name
                         value: ""
                       - name: tag

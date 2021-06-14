@@ -1,20 +1,13 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: github-eventsource
-  # annotations:
-  #   kubernetes.io/ingress.class: "nginx"
-  #   ingress.kubernetes.io/ssl-redirect: "false"
-  #   nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /push
-        pathType: Prefix
-        backend:
-          service:
-           name: webhook-eventsource-svc
-           port:
-             number: 12000
-    host: event-source.kube.kabaconde.com
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`event-source.kube.kabaconde.com`) && PathPrefix(`/push`)
+    services:
+    - name: webhook-eventsource-svc
+      port: 12000

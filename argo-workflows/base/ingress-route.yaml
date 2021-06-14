@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argo-workflows
+  namespace: argo
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - kind: Rule
+    match: Host(`workflows.kube.kabaconde.com`) && PathPrefix(`/`)
+    services:
+    - name: argo-server
+      port: 2746

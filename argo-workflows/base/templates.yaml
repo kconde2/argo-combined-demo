@@ -45,7 +45,7 @@ spec:
       - name: image_name
       - name: tag
     script:
-      image: kconde2/kustomize:3.9.2
+      image: vfarcic/kustomize:3.9.2
       command: [sh]
       source: |
         set -e

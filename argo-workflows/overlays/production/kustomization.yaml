@@ -4,4 +4,6 @@ resources:
 - ../../base
 - ../workflows
 - regcred.yaml
-- ingress.yaml
+- ingress-route.yaml
+patchesStrategicMerge:
+  - patch-argo-server.yaml
